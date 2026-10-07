@@ -1,0 +1,10 @@
+{"id": "inst-01", "category": "format", "prompt": "List exactly three fruits as a JSON array of strings and nothing else.", "expected": ["^\\[\\s*\\\"[^\\\"]+\\\"\\s*,\\s*\\\"[^\\\"]+\\\"\\s*,\\s*\\\"[^\\\"]+\\\"\\s*\\]$"], "scorer": "regex"}
+{"id": "inst-02", "category": "format", "prompt": "Reply with the single word YES in capital letters and nothing else.", "expected": ["^YES\\.?$"], "scorer": "regex"}
+{"id": "inst-03", "category": "format", "prompt": "Give a one-line answer in the form 'Capital: <city>'. What is the capital of Ethiopia?", "expected": ["^Capital:\\s*Addis Ababa\\.?$"], "scorer": "regex"}
+{"id": "inst-04", "category": "format", "prompt": "Write the numbers 1 to 5 separated by commas with no spaces, and nothing else.", "expected": ["^1,2,3,4,5$"], "scorer": "regex"}
+{"id": "inst-05", "category": "format", "prompt": "Return a JSON object with keys \"name\" and \"age\" for a person called Hana who is 29. Output only the JSON.", "expected": ["^\\{\\s*(\\\"name\\\"\\s*:\\s*\\\"Hana\\\"\\s*,\\s*\\\"age\\\"\\s*:\\s*29|\\\"age\\\"\\s*:\\s*29\\s*,\\s*\\\"name\\\"\\s*:\\s*\\\"Hana\\\")\\s*\\}$"], "scorer": "regex"}
+{"id": "inst-06", "category": "constraints", "prompt": "Write one sentence about coffee that does not contain the letter 'e' (upper or lower case).", "expected": ["^[^eE]+$"], "scorer": "regex"}
+{"id": "inst-07", "category": "constraints", "prompt": "Write a sentence about the Nile in which every word starts with a capital letter. Output only the sentence.", "expected": ["^(?:[A-Z][\\w'\u2019-]*[\\s,.!;:]*)+$"], "scorer": "regex"}
+{"id": "inst-08", "category": "constraints", "prompt": "Answer in all lowercase letters: what color is the sky on a clear day?", "expected": ["^[^A-Z]+$"], "scorer": "regex"}
+{"id": "inst-09", "category": "constraints", "prompt": "Write a haiku about rain as exactly three lines. Output only the three lines.", "expected": ["^[^\\n]+\\n[^\\n]+\\n[^\\n]+$"], "scorer": "regex"}
+{"id": "inst-10", "category": "constraints", "prompt": "Tell me one fact about honey. End your reply with the exact phrase 'Thank you.'", "expected": ["Thank you\\.$"], "scorer": "regex"}

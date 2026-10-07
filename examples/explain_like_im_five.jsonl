@@ -1,0 +1,4 @@
+{"system": "Explain simply, in under 80 words."}
+{"id": "eli5-photosynthesis", "category": "science", "prompt": "Explain photosynthesis to a five-year-old.", "scorer": "llm_judge", "rubric": "Accurate (plants use sunlight, water and air to make food), uses simple words a child knows, under 80 words."}
+{"id": "eli5-internet", "category": "tech", "prompt": "Explain how the internet works to a five-year-old.", "scorer": "llm_judge", "rubric": "Accurate basic idea (computers sending messages to each other through connections), simple words, under 80 words."}
+{"id": "eli5-vaccine", "category": "science", "prompt": "Explain what a vaccine does to a five-year-old.", "scorer": "llm_judge", "rubric": "Accurate (teaches the body to recognise and fight a germ), not scary, simple words, under 80 words."}

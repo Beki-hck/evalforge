@@ -1,0 +1,17 @@
+{
+ "code-is_palindrome": "def is_palindrome(s):\n    t=[c.lower() for c in s if c.isalnum()]\n    return t==t[::-1]",
+ "code-word_freq": "def word_freq(text):\n    d={}\n    for w in text.split():\n        w=w.strip('.,!?').lower()\n        if w: d[w]=d.get(w,0)+1\n    return d",
+ "code-compress": "def compress(s):\n    out=[];i=0\n    while i<len(s):\n        j=i\n        while j<len(s) and s[j]==s[i]: j+=1\n        out.append(f\"{s[i]}{j-i}\"); i=j\n    return ''.join(out)",
+ "code-is_anagram": "def is_anagram(a,b):\n    f=lambda s: sorted(s.replace(' ','').lower())\n    return f(a)==f(b)",
+ "code-second_largest": "def second_largest(nums):\n    u=sorted(set(nums))\n    return u[-2] if len(u)>1 else None",
+ "code-flatten": "def flatten(x):\n    out=[]\n    for v in x:\n        out.extend(flatten(v) if isinstance(v,list) else [v])\n    return out",
+ "code-chunk": "def chunk(items,size):\n    return [items[i:i+size] for i in range(0,len(items),size)]",
+ "code-merge_intervals": "def merge_intervals(iv):\n    out=[]\n    for s,e in sorted(iv):\n        if out and s<=out[-1][1]: out[-1][1]=max(out[-1][1],e)\n        else: out.append([s,e])\n    return out",
+ "code-is_prime": "def is_prime(n):\n    if n<2: return False\n    i=2\n    while i*i<=n:\n        if n%i==0: return False\n        i+=1\n    return True",
+ "code-fib": "def fib(n):\n    a,b=0,1\n    for _ in range(n): a,b=b,a+b\n    return a",
+ "code-digit_sum": "def digital_root(n):\n    while n>9: n=sum(map(int,str(n)))\n    return n",
+ "code-binary_search": "def binary_search(a,t):\n    lo,hi=0,len(a)-1\n    while lo<=hi:\n        m=(lo+hi)//2\n        if a[m]==t: return m\n        if a[m]<t: lo=m+1\n        else: hi=m-1\n    return -1",
+ "code-valid_brackets": "def valid_brackets(s):\n    st=[];pairs={')':'(',']':'[','}':'{'}\n    for c in s:\n        if c in '([{': st.append(c)\n        elif c in pairs:\n            if not st or st.pop()!=pairs[c]: return False\n    return not st",
+ "code-two_sum": "def two_sum(nums,target):\n    seen={}\n    for j,v in enumerate(nums):\n        if target-v in seen: return (seen[target-v],j)\n        seen.setdefault(v,j)\n    return None",
+ "code-roman": "def to_roman(n):\n    vals=[(1000,'M'),(900,'CM'),(500,'D'),(400,'CD'),(100,'C'),(90,'XC'),(50,'L'),(40,'XL'),(10,'X'),(9,'IX'),(5,'V'),(4,'IV'),(1,'I')]\n    out=''\n    for v,s in vals:\n        while n>=v: out+=s;n-=v\n    return out"
+}

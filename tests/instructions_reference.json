@@ -1,0 +1,12 @@
+{
+ "inst-01": "[\"mango\", \"banana\", \"papaya\"]",
+ "inst-02": "YES",
+ "inst-03": "Capital: Addis Ababa",
+ "inst-04": "1,2,3,4,5",
+ "inst-05": "{\"name\": \"Hana\", \"age\": 29}",
+ "inst-06": "A warm cup of dark Arabica is a joy.",
+ "inst-07": "The Nile Flows North Through Many Lands.",
+ "inst-08": "the sky is blue.",
+ "inst-09": "soft rain on tin roofs\nthe garden drinks quietly\nmorning smells of earth",
+ "inst-10": "Honey never spoils. Thank you."
+}
