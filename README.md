@@ -78,7 +78,19 @@ See [`examples/`](examples/) for an LLM-as-judge suite.
 ## Results
 
 <!-- results:start -->
-_Results from local runs will be added here._
+Two small open models, run locally through Ollama on a consumer laptop (temperature 0, one request at a time). Raw results and the full HTML report are in [`benchmarks/2026-10-08/`](benchmarks/2026-10-08/).
+
+| Model | Math (20) | Code (15) | Instructions (10) | Overall |
+|---|---|---|---|---|
+| `ollama:llama3.2:3b` | 85% (17/20) | 100% (15/15) | 90% (9/10) | **91%** (41/45) |
+| `ollama:qwen2.5:3b` | 100% (20/20) | 93% (14/15) | 70% (7/10) | **91%** (41/45) |
+
+**What the failures show**
+
+- **Instruction-following is the weakest area.** Qwen wrapped JSON in a markdown code fence twice when told to output "only the JSON". That's harmless for a chat user but it breaks a program parsing the output. Both models failed "write a sentence with no letter e".
+- **Llama makes confident arithmetic slips mid-reasoning.** It added 1/6 + 1/3 as 3/6 but then answered 6 hours instead of 2, gave 360 as the least common multiple of 6, 8 and 15 (it's 120), and miscounted the even numbers from 2 to 50 (25 terms, not 26).
+- **Qwen is stronger at math (20/20) but missed one code task:** its run-length encoder dropped the count for single characters (`b` instead of `b1`).
+- I checked every failure by hand. None were scorer mistakes.
 <!-- results:end -->
 
 ## How it works

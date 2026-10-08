@@ -1,0 +1,155 @@
+{
+  "suite": "instructions",
+  "model": "ollama:qwen2.5:3b",
+  "n": 10,
+  "passed": 7,
+  "accuracy": 0.7,
+  "errors": 0,
+  "median_latency_s": 0.226,
+  "by_category": {
+    "constraints": {
+      "n": 5,
+      "passed": 4,
+      "accuracy": 0.8
+    },
+    "format": {
+      "n": 5,
+      "passed": 3,
+      "accuracy": 0.6
+    }
+  },
+  "started_at": "2026-10-08T08:51:16+00:00",
+  "duration_s": 2.59,
+  "results": [
+    {
+      "id": "inst-01",
+      "category": "format",
+      "scorer": "regex",
+      "prompt": "List exactly three fruits as a JSON array of strings and nothing else.",
+      "answer": "```json\n[\n    \"apple\",\n    \"banana\",\n    \"orange\"\n]\n```",
+      "passed": false,
+      "value": 0.0,
+      "detail": "no pattern matched",
+      "latency_s": 0.3,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-02",
+      "category": "format",
+      "scorer": "regex",
+      "prompt": "Reply with the single word YES in capital letters and nothing else.",
+      "answer": "YES",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.059,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-03",
+      "category": "format",
+      "scorer": "regex",
+      "prompt": "Give a one-line answer in the form 'Capital: <city>'. What is the capital of Ethiopia?",
+      "answer": "Capital: Addis Ababa",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.126,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-04",
+      "category": "format",
+      "scorer": "regex",
+      "prompt": "Write the numbers 1 to 5 separated by commas with no spaces, and nothing else.",
+      "answer": "1,2,3,4,5",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.152,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-05",
+      "category": "format",
+      "scorer": "regex",
+      "prompt": "Return a JSON object with keys \"name\" and \"age\" for a person called Hana who is 29. Output only the JSON.",
+      "answer": "```json\n{\n  \"name\": \"Hana\",\n  \"age\": 29\n}\n```",
+      "passed": false,
+      "value": 0.0,
+      "detail": "no pattern matched",
+      "latency_s": 0.371,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-06",
+      "category": "constraints",
+      "scorer": "regex",
+      "prompt": "Write one sentence about coffee that does not contain the letter 'e' (upper or lower case).",
+      "answer": "Black gold sparkles in the cup.",
+      "passed": false,
+      "value": 0.0,
+      "detail": "no pattern matched",
+      "latency_s": 0.147,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-07",
+      "category": "constraints",
+      "scorer": "regex",
+      "prompt": "Write a sentence about the Nile in which every word starts with a capital letter. Output only the sentence.",
+      "answer": "Africa's Ancient Mighty Nile Boasts Beautiful Bountiful Waters.",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.226,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-08",
+      "category": "constraints",
+      "scorer": "regex",
+      "prompt": "Answer in all lowercase letters: what color is the sky on a clear day?",
+      "answer": "the color of the sky on a clear day is blue.",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.201,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-09",
+      "category": "constraints",
+      "scorer": "regex",
+      "prompt": "Write a haiku about rain as exactly three lines. Output only the three lines.",
+      "answer": "Rain whispers soft,\nLeaves dance in silent joy,\nNight cloaks earth in grey.",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.374,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "inst-10",
+      "category": "constraints",
+      "scorer": "regex",
+      "prompt": "Tell me one fact about honey. End your reply with the exact phrase 'Thank you.'",
+      "answer": "One fact about honey is that it has a long shelf life because of its high sugar content and low water content, which inhibits bacterial growth. Thank you.",
+      "passed": true,
+      "value": 1.0,
+      "detail": "pattern matched",
+      "latency_s": 0.63,
+      "cached": false,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "suite": "code",
+  "model": "ollama:qwen2.5:3b",
+  "n": 15,
+  "passed": 14,
+  "accuracy": 0.9333,
+  "errors": 0,
+  "median_latency_s": 1.471,
+  "by_category": {
+    "algorithms": {
+      "n": 4,
+      "passed": 4,
+      "accuracy": 1.0
+    },
+    "lists": {
+      "n": 4,
+      "passed": 4,
+      "accuracy": 1.0
+    },
+    "math": {
+      "n": 3,
+      "passed": 3,
+      "accuracy": 1.0
+    },
+    "strings": {
+      "n": 4,
+      "passed": 3,
+      "accuracy": 0.75
+    }
+  },
+  "started_at": "2026-10-08T08:50:49+00:00",
+  "duration_s": 23.86,
+  "results": [
+    {
+      "id": "code-is_palindrome",
+      "category": "strings",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `is_palindrome(s: str) -> bool` that returns True if s reads the same forwards and backwards, ignoring case, spaces and punctuation.",
+      "answer": "```python\ndef is_palindrome(s: str) -> bool:\n    cleaned_s = ''.join(c.lower() for c in s if c.isalnum())\n    return cleaned_s == cleaned_s[::-1]\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 0.679,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-word_freq",
+      "category": "strings",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `word_freq(text: str) -> dict` that returns a dict mapping each lowercase word to how many times it appears. Words are separated by whitespace; strip the punctuation characters .,!? from the ends of words.",
+      "answer": "```python\nimport re\nfrom collections import Counter\n\ndef word_freq(text: str) -> dict:\n    # Remove punctuation and split text into words\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    # Count the frequency of each word\n    return dict(Counter(words))\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 1.153,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-compress",
+      "category": "strings",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `compress(s: str) -> str` that does run-length encoding: 'aaabcc' becomes 'a3b1c2'. An empty string returns ''.",
+      "answer": "```python\ndef compress(s: str) -> str:\n    if not s:\n        return \"\"\n    \n    result = []\n    count = 1\n    for i in range(1, len(s) + 1):\n        if i == len(s) or s[i] != s[i-1]:\n            result.append(s[i-1] + (str(count) if count > 1 else \"\"))\n            count = 1\n        else:\n            count += 1\n    return ''.join(result)\n```",
+      "passed": false,
+      "value": 0.0,
+      "detail": "AssertionError",
+      "latency_s": 1.918,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-is_anagram",
+      "category": "strings",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `is_anagram(a: str, b: str) -> bool` that returns True if the two strings are anagrams of each other, ignoring case and spaces.",
+      "answer": "```python\ndef is_anagram(a: str, b: str) -> bool:\n    return sorted(a.replace(\" \", \"\").lower()) == sorted(b.replace(\" \", \"\").lower())\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 0.642,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-second_largest",
+      "category": "lists",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `second_largest(nums: list[int]) -> int | None` that returns the second largest distinct value, or None if there isn't one.",
+      "answer": "```python\ndef second_largest(nums: list[int]) -> int | None:\n    if len(nums) < 2:\n        return None\n\n    first = second = float('-inf')\n    for num in nums:\n        if num > first:\n            second = first\n            first = num\n        elif num > second and num != first:\n            second = num\n\n    return second if second != float('-inf') else None\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 1.646,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-flatten",
+      "category": "lists",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `flatten(x: list) -> list` that flattens arbitrarily nested lists, e.g. [1, [2, [3, 4]], 5] -> [1, 2, 3, 4, 5].",
+      "answer": "```python\ndef flatten(x: list) -> list:\n    result = []\n    for el in x:\n        if isinstance(el, list):\n            result.extend(flatten(el))\n        else:\n            result.append(el)\n    return result\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 0.854,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-chunk",
+      "category": "lists",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `chunk(items: list, size: int) -> list[list]` that splits a list into consecutive chunks of the given size; the last chunk may be shorter.",
+      "answer": "```python\ndef chunk(items: list, size: int) -> list[list]:\n    result = []\n    for i in range(0, len(items), size):\n        result.append(items[i:i + size])\n    return result\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 0.722,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-merge_intervals",
+      "category": "lists",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `merge_intervals(intervals: list[list[int]]) -> list[list[int]]` that merges overlapping intervals and returns them sorted by start. Intervals that touch (e.g. [1,3] and [3,5]) should merge.",
+      "answer": "```python\ndef merge_intervals(intervals: list[list[int]]) -> list[list[int]]:\n    if not intervals:\n        return []\n    \n    # Sort intervals based on the start of each interval\n    intervals.sort(key=lambda x: x[0])\n    \n    merged = []\n    for interval in intervals:\n        # If the list of merged intervals is empty or if the current\n        # interval does not overlap with the previous, simply append it.\n        if not merged or merged[-1][1] < interval[0]:\n            merged.append(interval)\n        else:\n            # Otherwise, there is an overlap, so we merge the current and previous intervals.\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    \n    return merged\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 2.983,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-is_prime",
+      "category": "math",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `is_prime(n: int) -> bool`.",
+      "answer": "```python\ndef is_prime(n: int) -> bool:\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 2.088,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-fib",
+      "category": "math",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `fib(n: int) -> int` returning the nth Fibonacci number with fib(0) = 0 and fib(1) = 1. It must handle n = 90 quickly.",
+      "answer": "```python\ndef fib(n: int) -> int:\n    if n == 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        a, b = 0, 1\n        for i in range(2, n + 1):\n            a, b = b, a + b\n        return b\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 1.373,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-digit_sum",
+      "category": "math",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `digital_root(n: int) -> int` that repeatedly sums the digits of a non-negative integer until a single digit remains.",
+      "answer": "```python\ndef digital_root(n: int) -> int:\n    while n > 9:\n        n = sum(int(digit) for digit in str(n))\n    return n\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 0.589,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-binary_search",
+      "category": "algorithms",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `binary_search(arr: list[int], target: int) -> int` that returns the index of target in the sorted list arr, or -1 if it is not present.",
+      "answer": "```python\ndef binary_search(arr: list[int], target: int) -> int:\n    left, right = 0, len(arr) - 1\n    \n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n            \n    return -1\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 1.798,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-valid_brackets",
+      "category": "algorithms",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `valid_brackets(s: str) -> bool` that returns True if every (, [ and { in s is closed in the correct order. Other characters are ignored.",
+      "answer": "```python\ndef valid_brackets(s: str) -> bool:\n    bracket_map = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n    open_brackets = set([\"(\", \"[\", \"{\"])\n    stack = []\n    \n    for char in s:\n        if char in open_brackets:\n            stack.append(char)\n        elif char in bracket_map:\n            if stack and stack[-1] == bracket_map[char]:\n                stack.pop()\n            else:\n                return False\n    return not stack\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 1.975,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-two_sum",
+      "category": "algorithms",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `two_sum(nums: list[int], target: int) -> tuple[int, int] | None` returning indices (i, j) with i < j and nums[i] + nums[j] == target, or None. If several pairs work, return the one with the smallest j.",
+      "answer": "```python\ndef two_sum(nums: list[int], target: int) -> tuple[int, int] | None:\n    num_to_index = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in num_to_index:\n            return (num_to_index[complement], i)\n        num_to_index[num] = i\n    return None\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 1.471,
+      "cached": false,
+      "error": null
+    },
+    {
+      "id": "code-roman",
+      "category": "algorithms",
+      "scorer": "python_tests",
+      "prompt": "Write a Python function `to_roman(n: int) -> str` converting an integer from 1 to 3999 into a Roman numeral.",
+      "answer": "```python\ndef to_roman(n: int) -> str:\n    val = [\n        1000, 900, 500, 400,\n        100, 90, 50, 40,\n        10, 9, 5, 4,\n        1\n        ]\n    syb = [\n        \"M\", \"CM\", \"D\", \"CD\",\n        \"C\", \"XC\", \"L\", \"XL\",\n        \"X\", \"IX\", \"V\", \"IV\",\n        \"I\"\n        ]\n    roman_num = ''\n    i = 0\n    while n > 0:\n        for _ in range(n // val[i]):\n            roman_num += syb[i]\n            n -= val[i]\n        i += 1\n    return roman_num\n```",
+      "passed": true,
+      "value": 1.0,
+      "detail": "all tests passed",
+      "latency_s": 3.395,
+      "cached": false,
+      "error": null
+    }
+  ]
+}
